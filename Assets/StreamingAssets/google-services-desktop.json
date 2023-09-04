@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "65003729838",
+    "project_id": "surgeon-hospital-doctor-games",
+    "storage_bucket": "surgeon-hospital-doctor-games.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65003729838:android:b0ee9ba28eb5b85d894e3f",
+        "android_client_info": {
+          "package_name": "com.gzs.surgeon.hospital.doctor.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65003729838-8nud7kkq8hcclqps9tkmplds30nbo7ff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuMmxtcr6I0zW24IfmNxqjupnwAYDSXno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65003729838-8nud7kkq8hcclqps9tkmplds30nbo7ff.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-3907280016164145~8592905615"
+    }
+  ],
+  "configuration_version": "1"
+}
