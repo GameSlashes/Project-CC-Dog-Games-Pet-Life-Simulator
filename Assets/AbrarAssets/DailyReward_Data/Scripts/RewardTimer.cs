@@ -48,6 +48,8 @@ public class RewardTimer : MonoBehaviour
 
     public void back()
     {
+        if (GR_SoundManager.instance)
+            GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
         rewardPanel.enabled = (false);
     }
 
@@ -145,6 +147,7 @@ public class RewardTimer : MonoBehaviour
                     rewardPanel.enabled = (true);
                     timeText.enabled = false;
                 }
+         
             }
         }
     }
@@ -222,36 +225,45 @@ public class RewardTimer : MonoBehaviour
             case 0:
                 GR_SaveData.instance.Coins += 100;
                 GR_CashUpdate.instance.updateCash();
+                if (GR_SoundManager.instance)
+                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
                 break;
             case 1:
                 GR_SaveData.instance.Coins += 300;
                 GR_CashUpdate.instance.updateCash();
+                if (GR_SoundManager.instance)
+                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
 
                 break;
             case 2:
                 GR_SaveData.instance.Coins += 500;
                 GR_CashUpdate.instance.updateCash();
-
+                if (GR_SoundManager.instance)
+                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
                 break;
             case 3:
                 GR_SaveData.instance.Coins += 800;
                 GR_CashUpdate.instance.updateCash();
-
+                if (GR_SoundManager.instance)
+                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
                 break;
             case 4:
                 GR_SaveData.instance.Coins += 1200;
                 GR_CashUpdate.instance.updateCash();
-
+                if (GR_SoundManager.instance)
+                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
                 break;
             case 5:
                 GR_SaveData.instance.Coins += 1500;
                 GR_CashUpdate.instance.updateCash();
-
+                if (GR_SoundManager.instance)
+                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
                 break;
             case 6:
                 GR_SaveData.instance.Coins += 2000;
                 GR_CashUpdate.instance.updateCash();
-
+                if (GR_SoundManager.instance)
+                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
                 break;
         }
 

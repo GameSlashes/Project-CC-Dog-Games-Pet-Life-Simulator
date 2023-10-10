@@ -226,16 +226,16 @@ namespace SickscoreGames.HUDNavigationSystem
                     PlayerCamera = hnsCamera.GetComponent<Camera>();
                 else
                     PlayerCamera = Camera.main;
-                if (PlayerCamera == null)
-                    Debug.LogError("[HUDNavigationSystem] Player camera unassigned. Assign camera to resume system!");
+                //if (PlayerCamera == null)
+                   // Debug.LogError("[HUDNavigationSystem] Player camera unassigned. Assign camera to resume system!");
             }
             if (PlayerController == null)
             {
                 HNSPlayerController hnsTransform = GameObject.FindObjectOfType<HNSPlayerController>();
                 if (hnsTransform != null)
                     PlayerController = hnsTransform.gameObject.transform;
-                if (PlayerController == null)
-                    Debug.LogError("[HUDNavigationSystem] Player transform unassigned. Assign transform to resume system!");
+              //  if (PlayerController == null)
+                  //  Debug.LogError("[HUDNavigationSystem] Player transform unassigned. Assign transform to resume system!");
             }
 
             // refresh references

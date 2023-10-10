@@ -46,7 +46,12 @@ public class GR_GameController : MonoBehaviour
     public GameObject Sichue;
     public GameObject fadeimage;
     public string ATP;
+    public Animator Anim;
 
+    private void _anim()
+    {
+       Anim = GR_GameController.instance.players[GR_SaveData.instance.finalPlayer].GetComponent<Animator>();
+    }
     public void Awake()
     {
         instance = this;
@@ -125,6 +130,7 @@ public class GR_GameController : MonoBehaviour
                     TapBtn.SetActive(false);
                     OntrigerDoorOpen.Instance.enb.enabled = false;
                     levels[GR_SaveData.instance.CurrentLevel].MilkBowlInHand.SetActive(true);
+                    Anim.SetBool("Carrying", true);
                     levels[GR_SaveData.instance.CurrentLevel].MilkBowlPick.SetActive(false);
                 }
                 else if(levels[GR_SaveData.instance.CurrentLevel].MilkBowlInHand.activeInHierarchy)
@@ -366,6 +372,15 @@ public class GR_GameController : MonoBehaviour
         {
             if (i == GR_SaveData.instance.CurrentLevel)
             {
+                //if(GR_SaveData.instance.CurrentLevel== 5)
+                //{
+                //    levels[i].LevelObject.SetActive(true);
+                //    if (levels[GR_SaveData.instance.CurrentLevel].StartScene)
+                //    {
+                //        levels[GR_SaveData.instance.CurrentLevel].StartScene.SetActive(true);
+                //        Invoke("ActivePlayer", levels[GR_SaveData.instance.CurrentLevel].StartSceneTimer);
+                //    }
+                //}
                 levels[i].LevelObject.SetActive(true);
                 if (levels[GR_SaveData.instance.CurrentLevel].StartScene)
                 {

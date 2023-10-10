@@ -28,7 +28,7 @@ public class LoadScene : MonoBehaviour
 
             if (asyncLoad.progress >= 0.9f)
             {
-                Loadingtext.SetActive(false);
+                Loadingtext.SetActive(true);
                 ContinueButton.SetActive(true);
             }
             yield return null;

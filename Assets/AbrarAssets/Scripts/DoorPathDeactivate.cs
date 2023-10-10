@@ -8,6 +8,7 @@ public class DoorPathDeactivate : MonoBehaviour
     public GameObject DoorPath_2;
     public bool LevelCom;
     public bool PlayerActivation;
+
     public void OnTriggerEnter(Collider other)
     {
 
@@ -46,6 +47,7 @@ public class DoorPathDeactivate : MonoBehaviour
             }
             else if (LevelCom)
             {
+                Debug.Log("a");
                 DoorPath_1.SetActive(false);
                 GR_GameController.instance.levelCompleted();
             }

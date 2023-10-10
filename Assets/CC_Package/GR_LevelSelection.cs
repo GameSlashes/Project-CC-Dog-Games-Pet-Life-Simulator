@@ -56,20 +56,41 @@ public class GR_LevelSelection : MonoBehaviour
         if (GR_SoundManager.instance)
             GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
     }
+    //void CacheButtons()
+    //{
+    //    Button[] levelButtons = LevelsPanel.transform.GetComponentsInChildren<Button>();
+    //    for (int i = 0; i < levelButtons.Length; i++)
+    //    {
+    //        LevelButtons.Add(levelButtons[i]);
+    //    }
+    //    LevelButtons = LevelButtons.OrderBy(x => Int32.Parse(x.gameObject.name)).ToList();
+    //    for (int i = 0; i < LevelButtons.Count; i++)
+    //    {
+    //        int LevelIndex = i;
+    //        LevelButtons[i].onClick.AddListener(() => PlayLevel(LevelIndex));
+    //        //if (GR_SoundManager.instance)
+    //        //    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
+    //    }
+    //}
     void CacheButtons()
     {
         Button[] levelButtons = LevelsPanel.transform.GetComponentsInChildren<Button>();
         for (int i = 0; i < levelButtons.Length; i++)
         {
-            LevelButtons.Add(levelButtons[i]);
+            if (levelButtons[i].gameObject.name != "AD")
+            {
+                if (levelButtons[i].gameObject.name != "LOCKED")
+                    LevelButtons.Add(levelButtons[i]);
+            }
+
         }
         LevelButtons = LevelButtons.OrderBy(x => Int32.Parse(x.gameObject.name)).ToList();
         for (int i = 0; i < LevelButtons.Count; i++)
         {
             int LevelIndex = i;
             LevelButtons[i].onClick.AddListener(() => PlayLevel(LevelIndex));
-            //if (GR_SoundManager.instance)
-            //    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
+            if (GR_SoundManager.instance)
+                GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
         }
     }
 
