@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GR_LevelSelection : MonoBehaviour
@@ -42,6 +43,11 @@ public class GR_LevelSelection : MonoBehaviour
         CacheButtons();
         LevelsInit();
         checkMode();
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().LoadInterstitialAd();
+          
+        }
 
 
         if (FindObjectOfType<Handler>())
@@ -49,7 +55,7 @@ public class GR_LevelSelection : MonoBehaviour
             FindObjectOfType<Handler>().ShowInterstitialAd();
             PlayerPrefs.SetInt("loadRequest", 5);
         }
-
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("modeSelection_Screen_Open");
     }
     public void playBtnSound()
     {
@@ -136,8 +142,11 @@ public class GR_LevelSelection : MonoBehaviour
     public void PlayLevel(int level)
     {
         GR_SaveData.Instance.CurrentLevel = level;
-        LoadingScreen.SetActive(true);
-        LoadScene.SceneName = NextScene.ToString();
+        PlayerPrefs.SetString("sceneName", NextScene.ToString());
+        SceneManager.LoadScene("FakeLoading");
+        //LoadingScreen.SetActive(true);
+        //LoadScene.SceneName = NextScene.ToString();
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("PlayLevel_" + GR_SaveData.Instance.CurrentLevel + "current Mode");
     }
 
     public void BackBtn()
@@ -153,9 +162,10 @@ public class GR_LevelSelection : MonoBehaviour
 
         PlayerPrefs.SetInt("showAds", 1);
 
-        LoadingScreen.SetActive(true);
-        LoadScene.SceneName = PreviousScene.ToString();
-       
+        //LoadingScreen.SetActive(true);
+        //LoadScene.SceneName = PreviousScene.ToString();
+        PlayerPrefs.SetString("sceneName", PreviousScene.ToString());
+        SceneManager.LoadScene("FakeLoading");
     }
 
     public void checkMode()

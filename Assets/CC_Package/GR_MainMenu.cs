@@ -55,6 +55,7 @@ public class GR_MainMenu : MonoBehaviour
         {
             FindObjectOfType<Handler>().LoadInterstitialAd();
         }
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("mainMenu_Screen_Open");
     }
     void Update()
     {
@@ -81,11 +82,22 @@ public class GR_MainMenu : MonoBehaviour
     }
     public void PlayBtn()
     {
+     
         playBtnSound();
-        LoadingScreen.SetActive(true);
-        SceneManager.LoadScene(NextScene.ToString());
-    }
+        //LoadingScreen.SetActive(true);
+        //SceneManager.LoadScene(NextScene.ToString());
+        PlayerPrefs.SetString("sceneName", NextScene.ToString());
+        SceneManager.LoadScene("FakeLoading");
 
+    }
+    public void reloadads()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            Debug.LogError("loadmainmenu");
+            FindObjectOfType<Handler>().LoadInterstitialAd();
+        }
+    }
     public void RemoveAds()
     {
         playBtnSound();

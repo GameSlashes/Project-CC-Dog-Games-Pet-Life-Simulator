@@ -44,6 +44,7 @@ public class DoorPathDeactivate : MonoBehaviour
                 GR_GameController.instance.CharacterController.SetActive(false);
                 DoorPath_1.SetActive(false);
                 DoorPath_2.SetActive(true);
+              
             }
             else if (LevelCom)
             {

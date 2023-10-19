@@ -108,7 +108,12 @@ public class GR_PlayerSelection : MonoBehaviour
                 FindObjectOfType<Handler>().LoadInterstitialAd();
             }
         }
-
+       
+        if (FindObjectOfType<Handler>())
+        {
+            Debug.LogError("showmainmenu");
+            FindObjectOfType<Handler>().ShowInterstitialAd();
+        }
     }
 
     public void Update()
@@ -292,8 +297,10 @@ public class GR_PlayerSelection : MonoBehaviour
         }
 
         PlayerPrefs.SetInt("showAds", 1);
-        Selection_UI.LoadingScreen.SetActive(true);
-        SceneManager.LoadScene(PreviousScene.ToString());
+        //Selection_UI.LoadingScreen.SetActive(true);
+        //SceneManager.LoadScene(PreviousScene.ToString());
+        PlayerPrefs.SetString("sceneName", PreviousScene.ToString());
+        SceneManager.LoadScene("FakeLoading");
     }
 
     public void playBtnSound()
@@ -306,8 +313,10 @@ public class GR_PlayerSelection : MonoBehaviour
     {
         playBtnSound();
         GR_SaveData.instance.finalPlayer = current;
-        Selection_UI.LoadingScreen.SetActive(true);
-        StartCoroutine(LevelStart());
+        PlayerPrefs.SetString("sceneName", NextScene.ToString());
+        SceneManager.LoadScene("FakeLoading");
+        //Selection_UI.LoadingScreen.SetActive(true);
+        //StartCoroutine(LevelStart());
     }
 
     IEnumerator LevelStart()

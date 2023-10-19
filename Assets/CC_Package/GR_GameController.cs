@@ -47,7 +47,7 @@ public class GR_GameController : MonoBehaviour
     public GameObject fadeimage;
     public string ATP;
     public Animator Anim;
-
+    public GameObject victorypanal;
     private void _anim()
     {
        Anim = GR_GameController.instance.players[GR_SaveData.instance.finalPlayer].GetComponent<Animator>();
@@ -88,6 +88,7 @@ public class GR_GameController : MonoBehaviour
         {
             GR_SoundManager.instance.allSoundsOff();
         }
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("gamePlay_Mode_Level" + GR_SaveData.Instance.CurrentLevel + "play");
     }
 
     public void mCam()
@@ -156,13 +157,12 @@ public class GR_GameController : MonoBehaviour
         }
         else if(OntrigerDoorOpen.Instance.animdoor_1)
         {
-            Debug.Log("5");
 
             anim();
         }
         else if(levels[GR_SaveData.instance.CurrentLevel].MilkBowlPick)
         {
-            Debug.Log("6");
+           
             TapBtn.SetActive(false);
             OntrigerDoorOpen.Instance.enb.enabled = false;
             levels[GR_SaveData.instance.CurrentLevel].MilkBowlInHand.SetActive(true);
@@ -443,6 +443,7 @@ public class GR_GameController : MonoBehaviour
         Game_Elements.levelFailedText.SetActive(true);
         LevelFailedEvent.Invoke();
         StartCoroutine(failedDialogue());
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("Failed_currentMode_Level" + GR_SaveData.Instance.CurrentLevel+ "Fail");
     }
     IEnumerator failedDialogue()
     {
@@ -541,7 +542,7 @@ public class GR_GameController : MonoBehaviour
     public void levelCompleted()
     {
         checkLevelReward();
-
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("Completed_currentMode_Level" + GR_SaveData.Instance.CurrentLevel+ "complete");
         if (GR_SaveData.instance.Level == GR_SaveData.instance.CurrentLevel + 1 && GR_SaveData.instance.Level <= playableLevels)
         {
             GR_SaveData.instance.Level += 1;
@@ -580,8 +581,11 @@ public class GR_GameController : MonoBehaviour
     IEnumerator completeDialogue()
     {
         yield return new WaitForSeconds(4f);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         Game_Elements.levelCompleteText.SetActive(false);
+        victorypanal.SetActive(true);
+        yield return new WaitForSeconds(7f);
+        victorypanal.SetActive(false);
         Game_Elements.LevelComplete.SetActive(true);
         if (GR_SoundManager.instance)
         {
@@ -627,16 +631,20 @@ public class GR_GameController : MonoBehaviour
     {
         Time.timeScale = 0;
         Game_Elements.PauseMenu.SetActive(true);
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("Pause_currentMode_Level" + GR_SaveData.Instance.CurrentLevel + "Pause");
     }
 
     public void resume()
     {
         Time.timeScale = 1;
         Game_Elements.PauseMenu.SetActive(false);
+        Firebase.Analytics.FirebaseAnalytics.LogEvent("Resume_currentMode_Level" + GR_SaveData.Instance.CurrentLevel+ "Resume");
     }
 
     public void doubleRewardBtn()
     {
+        if (FindObjectOfType<Handler>())
+            FindObjectOfType<Handler>().ShowRewardedAdsBoth(doubleTheReward);
     }
 
     public void doubleTheReward()

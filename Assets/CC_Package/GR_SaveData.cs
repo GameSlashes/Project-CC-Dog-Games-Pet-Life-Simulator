@@ -98,7 +98,7 @@ public class GR_SaveData
     public static event Action allCashUpdate;
     public static event Action allGemsUpdate;
 
-    public int CurrentLevel = 4;
+    public int CurrentLevel = 0;
     public int CurrentPlayer = 0;
 
     public int Coins

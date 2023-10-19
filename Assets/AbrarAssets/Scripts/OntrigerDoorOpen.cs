@@ -10,6 +10,7 @@ public class OntrigerDoorOpen : MonoBehaviour
     public DOTweenAnimation animdoor_1;
     public DOTweenAnimation animdoor_2;
     public BoxCollider enb;
+    public GameObject btn_sound;
     private void Awake()
     {
         enb = gameObject.GetComponent<BoxCollider>();

@@ -41,15 +41,28 @@ public class RewardTimer : MonoBehaviour
         {
             oldDate = System.DateTime.Parse(PlayerPrefs.GetString("LastClaimed"));
         }
+       
         Check();
         ClaimedRewardDays();
         activeCalimedOnes();
     }
-
+     public void reloadads()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            Debug.LogError("load");
+            FindObjectOfType<Handler>().LoadInterstitialAd();
+        }
+    }
     public void back()
     {
         if (GR_SoundManager.instance)
             GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
+        if (FindObjectOfType<Handler>())
+        {
+            Debug.LogError("show");
+            FindObjectOfType<Handler>().ShowInterstitialAd();
+        }
         rewardPanel.enabled = (false);
     }
 
