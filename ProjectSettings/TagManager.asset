@@ -26,6 +26,12 @@ TagManager:
   - Jump
   - Gun
   - Hurdle
+  - Effects
+  - FxTemporaire
+  - x_1
+  - x_3
+  - x_7
+  - x_10
   layers:
   - Default
   - TransparentFX

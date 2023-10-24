@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/CC_Package/Scenes/GR_PlayerSelection.unity
     guid: a222b56f1258fcb4ba8e89b01fb6cedc
   - enabled: 1
+    path: Assets/CC_Package/Scenes/GR_houseSelection.unity
+    guid: 09b6399e2a85fe4479f1ad4b08103d65
+  - enabled: 1
     path: Assets/CC_Package/Scenes/GR_LevelSelection.unity
     guid: b7e9236c536ffdf4b87abab8be9b60a2
   - enabled: 1

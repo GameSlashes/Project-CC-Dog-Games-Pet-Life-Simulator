@@ -8,6 +8,7 @@ public enum Scenes
     GR_MainMenu,
     GR_PlayerSelection,
     GR_LevelSelection,
+    GR_HouseSelection,
     GR_Gameplay
 }
 
@@ -98,8 +99,9 @@ public class GR_SaveData
     public static event Action allCashUpdate;
     public static event Action allGemsUpdate;
 
-    public int CurrentLevel = 0;
+    public int CurrentLevel = 1;
     public int CurrentPlayer = 0;
+    public int CurrentHouse = 0;
 
     public int Coins
     {
@@ -157,6 +159,17 @@ public class GR_SaveData
         set
         {
             PlayerPrefs.SetInt("selectedPlayer", value);
+        }
+    } 
+    public int finalhouse
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("selectedhouse", 0);
+        }
+        set
+        {
+            PlayerPrefs.SetInt("selectedhouse", value);
         }
     }
 

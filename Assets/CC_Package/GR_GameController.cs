@@ -13,7 +13,9 @@ public class GR_GameController : MonoBehaviour
     public Scenes PreviousScene;
     public Scenes MainMenu;
     [Header("--------------------Players-----------------------------")]
-    public GameObject[] players;
+    public GameObject[] players;  
+    [Header("--------------------Houses-----------------------------")]
+    public GameObject[] Houses;
     [Header("--------------------GirlPlayer-----------------------------")]
     public GameObject GirlPlayer;
     [Header("--------------------Levels-----------------------------")]
@@ -88,7 +90,19 @@ public class GR_GameController : MonoBehaviour
         {
             GR_SoundManager.instance.allSoundsOff();
         }
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().LoadInterstitialAd();
+        }
         Firebase.Analytics.FirebaseAnalytics.LogEvent("gamePlay_Mode_Level" + GR_SaveData.Instance.CurrentLevel + "play");
+    }
+    public void showad()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().ShowInterstitialAd();
+
+        }
     }
 
     public void mCam()
@@ -390,6 +404,7 @@ public class GR_GameController : MonoBehaviour
                 else
                 {
                     ActivePlayer();
+                    Activehouse();
                 }
             }
             else
@@ -491,6 +506,16 @@ public class GR_GameController : MonoBehaviour
             //}
         }
     }
+    public void Activehouse()
+    {
+        for (int i = 0; i < Houses.Length; i++)
+        {
+            if (i == GR_SaveData.instance.finalhouse)
+            {
+                Houses[i].SetActive(true);
+            }
+        }
+    }
 
     void SetPlayerPosition(GameObject Player, Transform Position)
     {
@@ -503,7 +528,7 @@ public class GR_GameController : MonoBehaviour
         GirlPlayer.transform.rotation = GirlPosition.rotation;
     }
 
-    void checkLevelReward()
+   public  void checkLevelReward()
     {
         if (levels[GR_SaveData.instance.CurrentLevel].isRewardBase)
         {
@@ -658,6 +683,27 @@ public class GR_GameController : MonoBehaviour
         GR_SaveData.instance.Gems += levels[GR_SaveData.instance.CurrentLevel].gemReward / 2;
 
         Game_Elements.doubleRewardBtn.SetActive(false);
+    }   
+    
+    public void doubleTheReward2()
+    {
+        levels[GR_SaveData.instance.CurrentLevel].coinReward *= 3;
+
+        Game_Elements.levelCompleteReward.text = levels[GR_SaveData.instance.CurrentLevel].coinReward.ToString();
+        GR_SaveData.instance.Coins += levels[GR_SaveData.instance.CurrentLevel].coinReward / 3;
+    }   
+    public void doubleTheReward3()
+    {
+        levels[GR_SaveData.instance.CurrentLevel].coinReward *= 5;
+        Game_Elements.levelCompleteReward.text = levels[GR_SaveData.instance.CurrentLevel].coinReward.ToString();
+        GR_SaveData.instance.Coins += levels[GR_SaveData.instance.CurrentLevel].coinReward / 5;
+    }   
+    public void doubleTheReward4()
+    {
+        levels[GR_SaveData.instance.CurrentLevel].coinReward *=7;
+        Game_Elements.levelCompleteReward.text = levels[GR_SaveData.instance.CurrentLevel].coinReward.ToString();
+        GR_SaveData.instance.Coins += levels[GR_SaveData.instance.CurrentLevel].coinReward / 7;
+
     }
 }
 

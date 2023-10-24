@@ -13199,6 +13199,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6895871922732795913, guid: 72e96ef4792c7a04f9be57672a76b0ef, type: 3}
+      propertyPath: NextScene
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895871922732795913, guid: 72e96ef4792c7a04f9be57672a76b0ef, type: 3}
       propertyPath: LevelsPanel
       value: 
       objectReference: {fileID: 566547594}

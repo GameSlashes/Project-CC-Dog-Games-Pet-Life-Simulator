@@ -47,6 +47,22 @@ public class PlayerAttributes
     public string playerStats;
 }
 
+[System.Serializable]
+public class HouseAttributes
+{
+    public int HouseID;
+    public GameObject HouseObject;
+
+    [Header("Unlocking")]
+    public bool Locked;
+    public bool UnlockThroughGems;
+    public bool UnlockThroughWatchVideo;
+    public bool UnlockThroughCoins;
+    public int CoinsPrice;
+    public string playerStats;
+}
+
+
 public class GR_PlayerSelection : MonoBehaviour
 {
     public static GR_PlayerSelection instance;
@@ -61,6 +77,8 @@ public class GR_PlayerSelection : MonoBehaviour
     [Header("Player Attributes")]
     public PlayerAttributes[] Players;
 
+    [Header("House Attributes")]
+    public HouseAttributes[] House;
     AsyncOperation async = null;
     [HideInInspector] public int current;
 
@@ -76,7 +94,7 @@ public class GR_PlayerSelection : MonoBehaviour
 
     public GameObject env;
     public GameObject unsufficintCash;
-
+    
     public void Awake()
     {
         instance = this;
@@ -254,6 +272,44 @@ public class GR_PlayerSelection : MonoBehaviour
             //    AdCalls.instance.RewardVideo("buyWithWatchVideo");
             //}
         }
+    }  
+    
+    public void buyHouse()
+    {
+        if (House[current].UnlockThroughCoins)
+        {
+            if (GR_SaveData.Instance.Coins >= House[current].CoinsPrice)
+            {
+                GR_SaveData.Instance.Coins -= House[current].CoinsPrice;
+                PlayerPrefs.SetString("UnlockedHouse" + House[current].HouseID, "Purchased");
+                House[current].Locked = false;
+                //GetPlayerInfo();
+                playBtnSound();
+            }
+            else
+            {
+                unsufficintCash.SetActive(true);
+            }
+        }
+        else if (House[current].UnlockThroughGems)
+        {
+            if (GR_SaveData.Instance.Gems >= House[current].CoinsPrice)
+            {
+                GR_SaveData.Instance.Gems -= House[current].CoinsPrice;
+                PlayerPrefs.SetString("UnlockedHouse" + House[current].HouseID, "Purchased");
+                House[current].Locked = false;
+                //GetPlayerInfo();
+                playBtnSound();
+            }
+        }
+        else if (House[current].UnlockThroughWatchVideo)
+        {
+            //if(AdCalls.instance)
+            //{
+            //    Debug.LogError("Calling");
+            //    AdCalls.instance.RewardVideo("buyWithWatchVideo");
+            //}
+        }
     }
 
     public void checkPlayerPurchasing()
@@ -267,6 +323,20 @@ public class GR_PlayerSelection : MonoBehaviour
             else
             {
                 Players[i].Locked = true;
+            }
+        }
+    } 
+    public void checkHousePurchasing()
+    {
+        for (int i = 1; i < House.Length; i++)
+        {
+            if (PlayerPrefs.GetString("UnlockedHouse" + House[i].HouseID) == "Purchased")
+            {
+                House[i].Locked = false;
+            }
+            else
+            {
+                House[i].Locked = true;
             }
         }
     }
@@ -313,6 +383,7 @@ public class GR_PlayerSelection : MonoBehaviour
     {
         playBtnSound();
         GR_SaveData.instance.finalPlayer = current;
+        GR_SaveData.instance.finalhouse = current;
         PlayerPrefs.SetString("sceneName", NextScene.ToString());
         SceneManager.LoadScene("FakeLoading");
         //Selection_UI.LoadingScreen.SetActive(true);
