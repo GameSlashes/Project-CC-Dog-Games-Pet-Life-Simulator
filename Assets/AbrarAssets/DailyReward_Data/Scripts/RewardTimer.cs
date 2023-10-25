@@ -50,7 +50,6 @@ public class RewardTimer : MonoBehaviour
     {
         if (FindObjectOfType<Handler>())
         {
-            Debug.LogError("load");
             FindObjectOfType<Handler>().LoadInterstitialAd();
         }
     }
@@ -60,7 +59,6 @@ public class RewardTimer : MonoBehaviour
             GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
         if (FindObjectOfType<Handler>())
         {
-            Debug.LogError("show");
             FindObjectOfType<Handler>().ShowInterstitialAd();
         }
         rewardPanel.enabled = (false);

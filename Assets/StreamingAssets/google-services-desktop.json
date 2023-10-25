@@ -1,39 +1,279 @@
 {
   "project_info": {
-    "project_number": "65003729838",
-    "project_id": "surgeon-hospital-doctor-games",
-    "storage_bucket": "surgeon-hospital-doctor-games.appspot.com"
+    "project_number": "989769391424",
+    "project_id": "airplane-games-flight-sim-3d",
+    "storage_bucket": "airplane-games-flight-sim-3d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:65003729838:android:b0ee9ba28eb5b85d894e3f",
+        "mobilesdk_app_id": "1:989769391424:android:db745c7645ae7e96ffeea5",
         "android_client_info": {
-          "package_name": "com.gzs.surgeon.hospital.doctor.games"
+          "package_name": "com.cc.dinosaur.attack.simulator.animal.game"
         }
       },
       "oauth_client": [
         {
-          "client_id": "65003729838-8nud7kkq8hcclqps9tkmplds30nbo7ff.apps.googleusercontent.com",
+          "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDuMmxtcr6I0zW24IfmNxqjupnwAYDSXno"
+          "current_key": "AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "65003729838-8nud7kkq8hcclqps9tkmplds30nbo7ff.apps.googleusercontent.com",
+              "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
         }
       },
-      "admob_app_id": "ca-app-pub-3907280016164145~8592905615"
+      "admob_app_id": "ca-app-pub-6785580110510565~5216715111"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989769391424:android:42fd720ac46731ebffeea5",
+        "android_client_info": {
+          "package_name": "com.cc.drift.pro.racing.car.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-6785580110510565~7487655238"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989769391424:android:90b5da8fe632d09cffeea5",
+        "android_client_info": {
+          "package_name": "com.cc.flight.simulator.fly.plane.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-6785580110510565~2782123463"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989769391424:android:f5bf05315e8282fcffeea5",
+        "android_client_info": {
+          "package_name": "com.cc.police.car.driving.cop.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-6785580110510565~8875988012"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989769391424:android:70acb6111846f6d8ffeea5",
+        "android_client_info": {
+          "package_name": "com.cc.puppy.simulator.pet.dog.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-6785580110510565~7514405506"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989769391424:android:f556366811ecffccffeea5",
+        "android_client_info": {
+          "package_name": "com.cc.tiger.simulator.animal.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-6785580110510565~2235328556"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989769391424:android:06d9c4e65775324bffeea5",
+        "android_client_info": {
+          "package_name": "com.cc.train.driving.simulator.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-6785580110510565~4785470271"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989769391424:android:624fea0aa97d62e8ffeea5",
+        "android_client_info": {
+          "package_name": "com.cc.truck.driving.simulator.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-6785580110510565~2096755428"
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:989769391424:android:791932c6a1a90559ffeea5",
+        "android_client_info": {
+          "package_name": "com.cc.wild.wolf.simulator.animal.games"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-6785580110510565~3165266846"
     }
   ],
   "configuration_version": "1"

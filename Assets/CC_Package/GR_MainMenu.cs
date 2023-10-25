@@ -94,7 +94,6 @@ public class GR_MainMenu : MonoBehaviour
     {
         if (FindObjectOfType<Handler>())
         {
-            Debug.LogError("loadmainmenu");
             FindObjectOfType<Handler>().LoadInterstitialAd();
         }
     }

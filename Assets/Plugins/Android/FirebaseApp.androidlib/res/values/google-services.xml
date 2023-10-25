@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
-  <string name="gcm_defaultSenderId" translatable="false">65003729838</string>
-  <string name="google_storage_bucket" translatable="false">surgeon-hospital-doctor-games.appspot.com</string>
-  <string name="project_id" translatable="false">surgeon-hospital-doctor-games</string>
-  <string name="google_api_key" translatable="false">AIzaSyDuMmxtcr6I0zW24IfmNxqjupnwAYDSXno</string>
-  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDuMmxtcr6I0zW24IfmNxqjupnwAYDSXno</string>
-  <string name="google_app_id" translatable="false">1:65003729838:android:b0ee9ba28eb5b85d894e3f</string>
-  <string name="default_web_client_id" translatable="false">65003729838-8nud7kkq8hcclqps9tkmplds30nbo7ff.apps.googleusercontent.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">989769391424</string>
+  <string name="google_storage_bucket" translatable="false">airplane-games-flight-sim-3d.appspot.com</string>
+  <string name="project_id" translatable="false">airplane-games-flight-sim-3d</string>
+  <string name="google_api_key" translatable="false">AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCxcOoAACFuDVwo--PsCpOZ5fpzlakcy0g</string>
+  <string name="google_app_id" translatable="false">1:989769391424:android:70acb6111846f6d8ffeea5</string>
+  <string name="default_web_client_id" translatable="false">989769391424-6ssm8d6kpaisr7hh8qccj451o5bcdoev.apps.googleusercontent.com</string>
 </resources>

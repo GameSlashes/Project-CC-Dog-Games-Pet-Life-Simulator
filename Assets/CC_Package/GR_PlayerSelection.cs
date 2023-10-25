@@ -129,7 +129,6 @@ public class GR_PlayerSelection : MonoBehaviour
        
         if (FindObjectOfType<Handler>())
         {
-            Debug.LogError("showmainmenu");
             FindObjectOfType<Handler>().ShowInterstitialAd();
         }
     }
