@@ -50,6 +50,9 @@ public class GR_GameController : MonoBehaviour
     public string ATP;
     public Animator Anim;
     public GameObject victorypanal;
+    public float jump;
+    public float forceMagnitude = 50f;
+
     private void _anim()
     {
        Anim = GR_GameController.instance.players[GR_SaveData.instance.finalPlayer].GetComponent<Animator>();
@@ -112,6 +115,11 @@ public class GR_GameController : MonoBehaviour
             freeLookCamera.GetRig(i).GetCinemachineComponent<CinemachineComposer>().m_VerticalDamping = 1f;
             freeLookCamera.GetRig(i).GetCinemachineComponent<CinemachineComposer>().m_HorizontalDamping =1f;
         }
+    }
+    public void dogjump()
+    {
+        Vector3 forwardForce = transform.forward * forceMagnitude;
+        Sichue.GetComponent<Rigidbody>().AddForce(forwardForce);
     }
     public void OTDO()
     {
@@ -605,17 +613,33 @@ public class GR_GameController : MonoBehaviour
     }
     IEnumerator completeDialogue()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(0f);
         //Time.timeScale = 0;
         Game_Elements.levelCompleteText.SetActive(false);
+        bigbanner();
         victorypanal.SetActive(true);
         yield return new WaitForSeconds(7f);
+        bboff();
         victorypanal.SetActive(false);
         Game_Elements.LevelComplete.SetActive(true);
         if (GR_SoundManager.instance)
         {
             GR_SoundManager.instance.LevelCompeleteSoundOff();
             GR_SoundManager.instance.playMainMenuSound();
+        }
+    }
+    public void bigbanner()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().ShowMediumBanner(GoogleMobileAds.Api.AdPosition.BottomLeft);
+        }
+    }
+    public void bboff()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().HideMediumBannerEvent();
         }
     }
 
@@ -629,17 +653,20 @@ public class GR_GameController : MonoBehaviour
         else
             GR_SaveData.instance.CurrentLevel = Random.Range(0, playableLevels - 1);
 
-        Game_Elements.LoadingScreen.SetActive(true);
-        LoadScene.SceneName = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("sceneName", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("FakeLoading");
+        //Game_Elements.LoadingScreen.SetActive(true);
+        //LoadScene.SceneName = SceneManager.GetActiveScene().name;
     }
 
     public void mainMenu()
     {
         if (GR_SoundManager.instance)
             GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
-
-        Game_Elements.LoadingScreen.SetActive(true);
-        LoadScene.SceneName = MainMenu.ToString();
+        PlayerPrefs.SetString("sceneName", MainMenu.ToString());
+        SceneManager.LoadScene("FakeLoading");
+        //Game_Elements.LoadingScreen.SetActive(true);
+        //LoadScene.SceneName = MainMenu.ToString();
 
     }
 
@@ -647,9 +674,10 @@ public class GR_GameController : MonoBehaviour
     {
         if (GR_SoundManager.instance)
             GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
-
-        Game_Elements.LoadingScreen.SetActive(true);
-        LoadScene.SceneName = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("sceneName", SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("FakeLoading");
+        //Game_Elements.LoadingScreen.SetActive(true);
+        //LoadScene.SceneName = SceneManager.GetActiveScene().name;
     }
 
     public void gamePause()

@@ -25,6 +25,8 @@ public class Selection_Elements
     public GameObject priceObject;
     public Image unlockAllPlayersBtn;
     public GameObject customizedButton;
+    public GameObject buy_iap;
+    public GameObject buy_watchvedio;
 }
 
 [System.Serializable]
@@ -38,21 +40,6 @@ public class PlayerAttributes
     public int Health;
     [Range(0, 100)]
     public int Acceleration;
-    [Header("Unlocking")]
-    public bool Locked;
-    public bool UnlockThroughGems;
-    public bool UnlockThroughWatchVideo;
-    public bool UnlockThroughCoins;
-    public int CoinsPrice;
-    public string playerStats;
-}
-
-[System.Serializable]
-public class HouseAttributes
-{
-    public int HouseID;
-    public GameObject HouseObject;
-
     [Header("Unlocking")]
     public bool Locked;
     public bool UnlockThroughGems;
@@ -77,10 +64,9 @@ public class GR_PlayerSelection : MonoBehaviour
     [Header("Player Attributes")]
     public PlayerAttributes[] Players;
 
-    [Header("House Attributes")]
-    public HouseAttributes[] House;
     AsyncOperation async = null;
     [HideInInspector] public int current;
+    [HideInInspector] public int currentHouse;
 
     [Header("Main Camera")]
     public GameObject mainCamera;
@@ -94,7 +80,7 @@ public class GR_PlayerSelection : MonoBehaviour
 
     public GameObject env;
     public GameObject unsufficintCash;
-    
+
     public void Awake()
     {
         instance = this;
@@ -126,7 +112,7 @@ public class GR_PlayerSelection : MonoBehaviour
                 FindObjectOfType<Handler>().LoadInterstitialAd();
             }
         }
-       
+
         if (FindObjectOfType<Handler>())
         {
             FindObjectOfType<Handler>().ShowInterstitialAd();
@@ -165,10 +151,11 @@ public class GR_PlayerSelection : MonoBehaviour
         if (Players[current].UnlockThroughCoins)
         {
             Selection_UI.BuyButton.gameObject.SetActive(true);
-            Selection_UI.buywithGems.gameObject.SetActive(false);
-            Selection_UI.buywithWatchVideo.gameObject.SetActive(false);
+            Selection_UI.buywithGems.gameObject.SetActive(true);
+            Selection_UI.buywithWatchVideo.gameObject.SetActive(true);
             Selection_UI.playerPrice.text = Players[current].CoinsPrice.ToString();
-
+            //Selection_UI.buy_watchvedio.gameObject.SetActive(true);
+            Selection_UI.buy_iap.gameObject.SetActive(true);
         }
         else if (Players[current].UnlockThroughGems)
         {
@@ -246,6 +233,7 @@ public class GR_PlayerSelection : MonoBehaviour
                 Players[current].Locked = false;
                 GetPlayerInfo();
                 playBtnSound();
+
             }
             else
             {
@@ -265,51 +253,13 @@ public class GR_PlayerSelection : MonoBehaviour
         }
         else if (Players[current].UnlockThroughWatchVideo)
         {
-            //if(AdCalls.instance)
-            //{
-            //    Debug.LogError("Calling");
-            //    AdCalls.instance.RewardVideo("buyWithWatchVideo");
-            //}
-        }
-    }  
-    
-    public void buyHouse()
-    {
-        if (House[current].UnlockThroughCoins)
-        {
-            if (GR_SaveData.Instance.Coins >= House[current].CoinsPrice)
-            {
-                GR_SaveData.Instance.Coins -= House[current].CoinsPrice;
-                PlayerPrefs.SetString("UnlockedHouse" + House[current].HouseID, "Purchased");
-                House[current].Locked = false;
-                //GetPlayerInfo();
-                playBtnSound();
-            }
-            else
-            {
-                unsufficintCash.SetActive(true);
-            }
-        }
-        else if (House[current].UnlockThroughGems)
-        {
-            if (GR_SaveData.Instance.Gems >= House[current].CoinsPrice)
-            {
-                GR_SaveData.Instance.Gems -= House[current].CoinsPrice;
-                PlayerPrefs.SetString("UnlockedHouse" + House[current].HouseID, "Purchased");
-                House[current].Locked = false;
-                //GetPlayerInfo();
-                playBtnSound();
-            }
-        }
-        else if (House[current].UnlockThroughWatchVideo)
-        {
-            //if(AdCalls.instance)
-            //{
-            //    Debug.LogError("Calling");
-            //    AdCalls.instance.RewardVideo("buyWithWatchVideo");
-            //}
+            if (FindObjectOfType<Handler>())
+                FindObjectOfType<Handler>().ShowRewardedAdsBoth(buyWithWatchVideo);
+
         }
     }
+
+
 
     public void checkPlayerPurchasing()
     {
@@ -318,27 +268,18 @@ public class GR_PlayerSelection : MonoBehaviour
             if (PlayerPrefs.GetString("UnlockedPlayer" + Players[i].playerID) == "Purchased")
             {
                 Players[i].Locked = false;
+                Selection_UI.buywithWatchVideo.gameObject.SetActive(false);
+                Selection_UI.buy_iap.gameObject.SetActive(false);
             }
             else
             {
                 Players[i].Locked = true;
-            }
-        }
-    } 
-    public void checkHousePurchasing()
-    {
-        for (int i = 1; i < House.Length; i++)
-        {
-            if (PlayerPrefs.GetString("UnlockedHouse" + House[i].HouseID) == "Purchased")
-            {
-                House[i].Locked = false;
-            }
-            else
-            {
-                House[i].Locked = true;
+                Selection_UI.buywithWatchVideo.gameObject.SetActive(true);
+                Selection_UI.buy_iap.gameObject.SetActive(true);
             }
         }
     }
+
 
     public void Previous()
     {
@@ -353,6 +294,7 @@ public class GR_PlayerSelection : MonoBehaviour
         GetPlayerInfo();
         playBtnSound();
     }
+
 
     public void BackBtn()
     {
@@ -396,7 +338,13 @@ public class GR_PlayerSelection : MonoBehaviour
         yield return async;
     }
 
-
+    public void buyplayer_watchvideo()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().ShowRewardedAdsBoth(buyWithWatchVideo);
+        }
+    }
     public void buyWithWatchVideo()
     {
         PlayerPrefs.SetString("UnlockedPlayer" + Players[current].playerID, "Purchased");

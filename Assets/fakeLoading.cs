@@ -31,7 +31,7 @@ public class fakeLoading : MonoBehaviour
     }
     public void Update()
     {
-        fillBar.fillAmount += 2f * Time.deltaTime;
+        fillBar.fillAmount += 0.2f * Time.deltaTime;
 
         if (fillBar.fillAmount >= 0.85f)
         {

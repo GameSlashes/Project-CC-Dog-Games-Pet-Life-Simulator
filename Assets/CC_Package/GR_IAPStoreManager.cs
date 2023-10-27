@@ -23,6 +23,7 @@ public class GR_IAPStoreManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             PlayerPrefs.SetString("UnlockedPlayer" + i, "Purchased");
+            PlayerPrefs.SetString("UnlockedHouse" + i, "Purchased");
         }
     }
 

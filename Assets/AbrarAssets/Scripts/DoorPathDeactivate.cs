@@ -54,12 +54,22 @@ public class DoorPathDeactivate : MonoBehaviour
             }
             else if (DoorPath_1)
             {
+                Debug.Log("z");
                 DoorPath_1.SetActive(false);
             }
             if (DoorPath_2)
             {
+                Debug.Log("x");
                 DoorPath_2.SetActive(true);
             }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            DoorPath_1.SetActive(true);
+            DoorPath_2.SetActive(false);
         }
     }
 }
