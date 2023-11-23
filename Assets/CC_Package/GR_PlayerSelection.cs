@@ -206,17 +206,23 @@ public class GR_PlayerSelection : MonoBehaviour
 
         if (current == 0)
         {
-            Selection_UI.PrevBtn.SetActive(false);
-            Selection_UI.NextBtn.SetActive(true);
+            Selection_UI.NextBtn.GetComponent<Button>().interactable = true;
+            Selection_UI.PrevBtn.GetComponent<Button>().interactable = false;
+            //Selection_UI.PrevBtn.SetActive(false);
+            //Selection_UI.NextBtn.SetActive(true);
         }
         else
         if (current == Players.Length - 1)
         {
-            Selection_UI.PrevBtn.SetActive(true);
-            Selection_UI.NextBtn.SetActive(false);
+            Selection_UI.PrevBtn.GetComponent<Button>().interactable = true;
+            Selection_UI.NextBtn.GetComponent<Button>().interactable = false;
+            //Selection_UI.PrevBtn.SetActive(true);
+            //Selection_UI.NextBtn.SetActive(false);
         }
         else
         {
+            Selection_UI.PrevBtn.GetComponent<Button>().interactable = true;
+            Selection_UI.NextBtn.GetComponent<Button>().interactable = true;
             Selection_UI.PrevBtn.SetActive(true);
             Selection_UI.NextBtn.SetActive(true);
         }

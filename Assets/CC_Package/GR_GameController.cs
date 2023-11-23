@@ -52,6 +52,8 @@ public class GR_GameController : MonoBehaviour
     public GameObject victorypanal;
     public float jump;
     public float forceMagnitude = 50f;
+    public GameObject SkipPanel;
+    public GameObject SkipPanel_1;
 
     private void _anim()
     {
@@ -407,6 +409,7 @@ public class GR_GameController : MonoBehaviour
                 if (levels[GR_SaveData.instance.CurrentLevel].StartScene)
                 {
                     levels[GR_SaveData.instance.CurrentLevel].StartScene.SetActive(true);
+                    SkipPanel.SetActive(true);
                     Invoke("ActivePlayer", levels[GR_SaveData.instance.CurrentLevel].StartSceneTimer);
                 }
                 else
@@ -420,6 +423,7 @@ public class GR_GameController : MonoBehaviour
                 Destroy(levels[i].LevelObject);
             }
         }
+
 
         if (levels[GR_SaveData.instance.CurrentLevel].isTimeBased)
         {
@@ -435,6 +439,16 @@ public class GR_GameController : MonoBehaviour
         LevelTime = (levels[GR_SaveData.instance.CurrentLevel].Minutes * 60) + levels[GR_SaveData.instance.CurrentLevel].Seconds;
         Time.timeScale = 1;
         AudioListener.pause = false;
+    }
+
+    public void SkipCutScene()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().ShowInterstitialAd();
+        }
+        ActivePlayer();
+        SkipPanel.SetActive(false);
     }
 
     void GameTimer()
@@ -477,6 +491,8 @@ public class GR_GameController : MonoBehaviour
     }
     public void ActivePlayer()
     {
+        SkipPanel.SetActive(false);
+
         for (int i = 0; i < players.Length; i++)
         {
 
@@ -585,6 +601,7 @@ public class GR_GameController : MonoBehaviour
             PuppyControler.SetActive(false);
             CharacterController.SetActive(false);
             levels[GR_SaveData.instance.CurrentLevel].EndScene.SetActive(true);
+            SkipPanel_1.SetActive(true);
             LevelCompleteEvent.Invoke();
             Invoke("levelComp", levels[GR_SaveData.instance.CurrentLevel].EndSceneTimer);
         }
@@ -596,9 +613,22 @@ public class GR_GameController : MonoBehaviour
             levelComp();
         }
     }
+    public void SkipLevelEndCutScene()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().ShowInterstitialAd();
+        }
+        PuppyControler.SetActive(false);
+        CharacterController.SetActive(false);
+        LevelCompleteEvent.Invoke();
+        levelComp();
+        SkipPanel_1.SetActive(false);
+    }
     public void levelComp()
     {
         StartCoroutine(completeDialogue());
+        SkipPanel_1.SetActive(false);
         if (levels[GR_SaveData.instance.CurrentLevel].EndScene)
         {
             levels[GR_SaveData.instance.CurrentLevel].EndScene.SetActive(false);
@@ -617,6 +647,10 @@ public class GR_GameController : MonoBehaviour
         //Time.timeScale = 0;
         Game_Elements.levelCompleteText.SetActive(false);
         bigbanner();
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().LoadInterstitialAd();
+        }
         victorypanal.SetActive(true);
         yield return new WaitForSeconds(7f);
         bboff();
@@ -645,6 +679,7 @@ public class GR_GameController : MonoBehaviour
 
     public void NextBtn()
     {
+        Time.timeScale = 1;
         if (GR_SoundManager.instance)
             GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
 
@@ -661,6 +696,7 @@ public class GR_GameController : MonoBehaviour
 
     public void mainMenu()
     {
+        Time.timeScale = 1;
         if (GR_SoundManager.instance)
             GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
         PlayerPrefs.SetString("sceneName", MainMenu.ToString());
@@ -672,6 +708,7 @@ public class GR_GameController : MonoBehaviour
 
     public void restart()
     {
+        Time.timeScale = 1;
         if (GR_SoundManager.instance)
             GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
         PlayerPrefs.SetString("sceneName", SceneManager.GetActiveScene().name);

@@ -41,27 +41,19 @@ public class RewardTimer : MonoBehaviour
         {
             oldDate = System.DateTime.Parse(PlayerPrefs.GetString("LastClaimed"));
         }
-       
         Check();
         ClaimedRewardDays();
         activeCalimedOnes();
     }
-     public void reloadads()
-    {
-        if (FindObjectOfType<Handler>())
-        {
-            FindObjectOfType<Handler>().LoadInterstitialAd();
-        }
-    }
+
     public void back()
     {
-        if (GR_SoundManager.instance)
-            GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
-        if (FindObjectOfType<Handler>())
-        {
-            FindObjectOfType<Handler>().ShowInterstitialAd();
-        }
         rewardPanel.enabled = (false);
+    }
+
+    public void come()
+    {
+        rewardPanel.enabled = (true);
     }
 
     private void activeCalimedOnes()
@@ -158,7 +150,6 @@ public class RewardTimer : MonoBehaviour
                     rewardPanel.enabled = (true);
                     timeText.enabled = false;
                 }
-         
             }
         }
     }
@@ -198,6 +189,8 @@ public class RewardTimer : MonoBehaviour
         // timeText2.text = time;
     }
 
+    public static int coinReward = 0;
+    int currentReward = coinReward;
 
 
     public void ClaimReward(int i)
@@ -230,60 +223,87 @@ public class RewardTimer : MonoBehaviour
         ClaimedCheck(i);
 
         congratesPanel.SetActive(true);
+        congratesPanel.transform.GetChild(0).gameObject.SetActive(true);
+        congratesPanel.transform.GetChild(1).gameObject.SetActive(false);
+
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().LoadInterstitialAd();
+        }
 
         switch (i)
         {
             case 0:
-                GR_SaveData.instance.Coins += 100;
-                GR_CashUpdate.instance.updateCash();
-                if (GR_SoundManager.instance)
-                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
+                currentReward = 100;
                 break;
             case 1:
-                GR_SaveData.instance.Coins += 300;
-                GR_CashUpdate.instance.updateCash();
-                if (GR_SoundManager.instance)
-                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
-
+                currentReward = 100;
                 break;
             case 2:
-                GR_SaveData.instance.Coins += 500;
-                GR_CashUpdate.instance.updateCash();
-                if (GR_SoundManager.instance)
-                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
+                currentReward = 100;
                 break;
             case 3:
-                GR_SaveData.instance.Coins += 800;
-                GR_CashUpdate.instance.updateCash();
-                if (GR_SoundManager.instance)
-                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
+                currentReward = 100;
                 break;
             case 4:
-                GR_SaveData.instance.Coins += 1200;
-                GR_CashUpdate.instance.updateCash();
-                if (GR_SoundManager.instance)
-                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
+                currentReward = 100;
                 break;
             case 5:
-                GR_SaveData.instance.Coins += 1500;
-                GR_CashUpdate.instance.updateCash();
-                if (GR_SoundManager.instance)
-                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
+                currentReward = 100;
                 break;
             case 6:
-                GR_SaveData.instance.Coins += 2000;
-                GR_CashUpdate.instance.updateCash();
-                if (GR_SoundManager.instance)
-                    GR_SoundManager.instance.onButtonClickSound(GR_SoundManager.instance.buttonMainSound);
+                currentReward = 100;
                 break;
         }
-
+        GR_SaveData.instance.Coins += currentReward;
         StartCoroutine(delay());
     }
 
     IEnumerator delay()
     {
         yield return new WaitForSeconds(2f);
+        congratesPanel.transform.GetChild(0).gameObject.SetActive(false);
+        congratesPanel.transform.GetChild(1).gameObject.SetActive(true);
+
+    }
+    public void DoubleReward()
+    {
+        if (FindObjectOfType<Handler>())
+            FindObjectOfType<Handler>().ShowRewardedAdsBoth(DoubleTheReward);
+    }
+    public void DoubleTheReward()
+    {
+        currentReward *= 2;
+        GR_SaveData.instance.Coins += currentReward / 2;
+        congratesPanel.transform.GetChild(2).gameObject.SetActive(true);
+        congratesPanel.transform.GetChild(1).gameObject.SetActive(false);
+        Invoke("delay1", 2.5f);
+    }
+    public void delay1()
+    {
         congratesPanel.SetActive(false);
+    }
+    public void NotWantDoubleReward()
+    {
+        congratesPanel.SetActive(false);
+
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().LoadInterstitialAd();
+        }
+    }
+    public void ShowAd()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().ShowInterstitialAd();
+        }
+    }
+    public void LoadAd()
+    {
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().LoadInterstitialAd();
+        }
     }
 }

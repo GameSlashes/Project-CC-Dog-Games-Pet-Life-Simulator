@@ -196,17 +196,19 @@ public class GR_HouseSelection : MonoBehaviour
 
         if (currentHouse == 0)
         {
-            Selection_UI.PrevBtn.SetActive(false);
-            Selection_UI.NextBtn.SetActive(true);
+            Selection_UI.NextBtn.GetComponent<Button>().interactable = true;
+            Selection_UI.PrevBtn.GetComponent<Button>().interactable = false;
         }
         else
         if (currentHouse == House.Length - 1)
         {
-            Selection_UI.PrevBtn.SetActive(true);
-            Selection_UI.NextBtn.SetActive(false);
+            Selection_UI.PrevBtn.GetComponent<Button>().interactable = true;
+            Selection_UI.NextBtn.GetComponent<Button>().interactable = false;
         }
         else
         {
+            Selection_UI.PrevBtn.GetComponent<Button>().interactable = true;
+            Selection_UI.NextBtn.GetComponent<Button>().interactable = true;
             Selection_UI.PrevBtn.SetActive(true);
             Selection_UI.NextBtn.SetActive(true);
         }

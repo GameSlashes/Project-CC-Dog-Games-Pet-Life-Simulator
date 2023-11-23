@@ -21,6 +21,7 @@ public class GR_MainMenu : MonoBehaviour
     public GameObject MusicOffBtn;
     public Slider slider;
     public GameObject env;
+    public GameObject SpinAndWin;
     private void Awake()
     {
         env.SetActive(true);
@@ -67,6 +68,25 @@ public class GR_MainMenu : MonoBehaviour
             }
         }
         //AudioListener.volume = slider.value;
+    }
+
+    public void SpinAndWinEnable()
+    {
+        SpinAndWin.SetActive(true);
+        env.SetActive(false);
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().ShowInterstitialAd();
+        }
+    }
+    public void SpinAndWinDisable()
+    {
+        env.SetActive(true);
+        SpinAndWin.SetActive(false);
+        if (FindObjectOfType<Handler>())
+        {
+            FindObjectOfType<Handler>().ShowInterstitialAd();
+        }
     }
 
     void InitializeUI()

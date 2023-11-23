@@ -15,6 +15,7 @@ public class fakeLoading : MonoBehaviour
     {
         if (FindObjectOfType<Handler>())
         {
+            FindObjectOfType<Handler>().LoadInterstitialAd();
             FindObjectOfType<Handler>().ShowMediumBanner(GoogleMobileAds.Api.AdPosition.BottomLeft);
         }
 
@@ -22,13 +23,13 @@ public class fakeLoading : MonoBehaviour
         onTime = false;
     }
 
-    public void Start()
-    {
-        if (FindObjectOfType<Handler>())
-        {
-            FindObjectOfType<Handler>().LoadInterstitialAd();
-        }
-    }
+    //public void Start()
+    //{
+    //    if (FindObjectOfType<Handler>())
+    //    {
+    //        FindObjectOfType<Handler>().LoadInterstitialAd();
+    //    }
+    //}
     public void Update()
     {
         fillBar.fillAmount += 0.2f * Time.deltaTime;
@@ -37,6 +38,8 @@ public class fakeLoading : MonoBehaviour
         {
             if (onTime == false)
             {
+                if (FindObjectOfType<Handler>())
+                    FindObjectOfType<Handler>().ShowInterstitialAd();
                 offBB();
                 onTime = true;
             }

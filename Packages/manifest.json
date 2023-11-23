@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.unity.2d.animation": "7.0.12",
     "com.unity.2d.spriteshape": "7.0.7",
     "com.unity.ads": "4.4.2",
     "com.unity.cinemachine": "2.8.9",
