@@ -1233,7 +1233,21 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
     {
         NotifyReward = _delegate;
         Admob_LogHelper.LogSender(AdmobEvents.ShowRewardedInterstitialAd_H_ECPM);
+
+        if (this.rewardedInterstitialAd != null)
+        {
+            if (rewardedInterstitialHighECPMLoaded)
+            {
+                this.rewardedInterstitialAd.Show(userEarnedRewardCallback);
+            }
+        }
     }
+
+    private void userEarnedRewardCallback(Reward reward)
+    {
+
+    }
+
     public override bool IsRewardedInterstitialAdReady()
     {
         if (this.rewardedInterstitialAd != null)
