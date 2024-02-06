@@ -201,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2214116484807183005}
   - component: {fileID: 2214116484807182946}
+  - component: {fileID: 1484853048}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -238,8 +239,8 @@ MonoBehaviour:
   EnableTestModeAds: 1
   DisableDebugLogs: 1
   Loading: {fileID: 731621290}
-  banner1: 0
-  banner2: 1
+  banner1: 2
+  banner2: 3
   AndroidAdmob_ID:
     UnityId: 5386720
     Unity_Interstitial_ID: Interstitial_Android
@@ -297,6 +298,20 @@ MonoBehaviour:
     RewardedVideo: 
     RewardedInt: 
   rewardedInterstitialHighECPMLoaded: 0
+--- !u!114 &1484853048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2214116484807182947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46f6c6a6b06081c4bae1480cfc4c9e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _adUnitId: ca-app-pub-3940256099942544/9257395921
+  AdShowing: 0
 --- !u!1001 &880470987
 PrefabInstance:
   m_ObjectHideFlags: 0

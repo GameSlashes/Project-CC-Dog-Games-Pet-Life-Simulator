@@ -1,4 +1,3 @@
-
 using GoogleMobileAds.Api;
 using GoogleMobileAds.Common;
 using System;
@@ -244,6 +243,9 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
             {
                 if (this.Interstitial_High_Ecpm.CanShowAd())
                 {
+                    if (AppOpenAdController.Instance)
+                        AppOpenAdController.Instance.AdShowing = true;
+
                     Admob_LogHelper.LogSender(AdmobEvents.Interstitial_WillDisplay_High_Ecpm);
                     this.Interstitial_High_Ecpm.Show();
 
@@ -252,6 +254,9 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
         }
         else if (UnityAds)
         {
+            if (AppOpenAdController.Instance)
+                AppOpenAdController.Instance.AdShowing = true;
+
             Admob_LogHelper.LogGAEvent("unity_interstitial_loaded");
             Advertisement.Show(ADMOB_ID.Unity_Interstitial_ID, this);
         }
@@ -877,7 +882,7 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
                 }
             });
         };
-       
+
         this.MediumBannerMediumEcpm.OnBannerAdLoadFailed += (LoadAdError error) =>
         {
             Logging.Log("Banner view failed to load an ad with error : " + error);
@@ -898,24 +903,24 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
                 }
             });
         };
-       
+
         this.MediumBannerMediumEcpm.OnAdPaid += (AdValue adValue) =>
         {
             Logging.Log(String.Format("Banner view paid {0} {1}.",
                 adValue.Value,
                 adValue.CurrencyCode));
         };
-        
+
         this.MediumBannerMediumEcpm.OnAdImpressionRecorded += () =>
         {
             Logging.Log("Banner view recorded an impression.");
         };
-      
+
         this.MediumBannerMediumEcpm.OnAdClicked += () =>
         {
             Logging.Log("Banner view was clicked.");
         };
-        
+
         this.MediumBannerMediumEcpm.OnAdFullScreenContentOpened += () =>
         {
             Logging.Log("Banner view full screen content opened.");
@@ -930,7 +935,7 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
                 }
             });
         };
-       
+
         this.MediumBannerMediumEcpm.OnAdFullScreenContentClosed += () =>
         {
             Logging.Log("Banner view full screen content closed.");
@@ -960,7 +965,7 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
                 }
             });
         };
-        
+
         this.MediumBannerLowEcpm.OnBannerAdLoadFailed += (LoadAdError error) =>
         {
             Logging.Log("Banner view failed to load an ad with error : " + error);
@@ -984,17 +989,17 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
                 adValue.Value,
                 adValue.CurrencyCode));
         };
-       
+
         this.MediumBannerLowEcpm.OnAdImpressionRecorded += () =>
         {
             Logging.Log("Banner view recorded an impression.");
         };
-       
+
         this.MediumBannerLowEcpm.OnAdClicked += () =>
         {
             Logging.Log("Banner view was clicked.");
         };
-        
+
         this.MediumBannerLowEcpm.OnAdFullScreenContentOpened += () =>
         {
             Logging.Log("Banner view full screen content opened.");
@@ -1010,7 +1015,7 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
                 }
             });
         };
-       
+
         this.MediumBannerLowEcpm.OnAdFullScreenContentClosed += () =>
         {
             Logging.Log("Banner view full screen content closed.");
@@ -1051,7 +1056,7 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
                         Logging.Log("Rewarded ad failed to load an ad with error : " + error);
                         return;
                     }
-                    
+
                     if (ad == null)
                     {
                         Logging.Log("Unexpected error: Rewarded load event fired with null ad and null error.");
@@ -1085,6 +1090,9 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
 
             if (this.rewardBasedVideo.CanShowAd())
             {
+                if (AppOpenAdController.Instance)
+                    AppOpenAdController.Instance.AdShowing = true;
+
                 Admob_LogHelper.LogSender(AdmobEvents.RewardedVideo_WillDisplay_High_Ecpm);
 
                 this.rewardBasedVideo.Show((Reward reward) =>
@@ -1097,6 +1105,9 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
         }
         else if (UnityRewarded)
         {
+            if (AppOpenAdController.Instance)
+                AppOpenAdController.Instance.AdShowing = true;
+
             NotifyReward = _delegate;
             Advertisement.Show(ADMOB_ID.Unity_RewardedVideo, this);
         }
@@ -1229,6 +1240,7 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
             });
         }
     }
+
     public override void ShowRewardedInterstitialAd(RewardUserDelegate _delegate)
     {
         NotifyReward = _delegate;
@@ -1238,6 +1250,9 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
         {
             if (rewardedInterstitialHighECPMLoaded)
             {
+                if (AppOpenAdController.Instance)
+                    AppOpenAdController.Instance.AdShowing = true;
+
                 this.rewardedInterstitialAd.Show(userEarnedRewardCallback);
             }
         }
@@ -1247,6 +1262,7 @@ public class AdmobAdsManager : Handler, IUnityAdsInitializationListener, IUnityA
     {
 
     }
+
 
     public override bool IsRewardedInterstitialAdReady()
     {
