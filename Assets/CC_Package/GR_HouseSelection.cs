@@ -343,8 +343,6 @@ public class GR_HouseSelection : MonoBehaviour
 
     public void buyWithWatchVideo()
     {
-        Debug.LogError(House[currentHouse].HouseID);
-
         PlayerPrefs.SetString("UnlockedHouse" + House[currentHouse].HouseID, "Purchased");
         House[currentHouse].Locked = false;
         GetHouseInfo();

@@ -316,6 +316,7 @@ public class GR_PlayerSelection : MonoBehaviour
         PlayerPrefs.SetInt("showAds", 1);
         //Selection_UI.LoadingScreen.SetActive(true);
         //SceneManager.LoadScene(PreviousScene.ToString());
+        
         PlayerPrefs.SetString("sceneName", PreviousScene.ToString());
         SceneManager.LoadScene("FakeLoading");
     }
@@ -331,6 +332,7 @@ public class GR_PlayerSelection : MonoBehaviour
         playBtnSound();
         GR_SaveData.instance.finalPlayer = current;
         GR_SaveData.instance.finalhouse = current;
+        PlayerPrefs.SetInt("adShowing", 5);
         PlayerPrefs.SetString("sceneName", NextScene.ToString());
         SceneManager.LoadScene("FakeLoading");
         //Selection_UI.LoadingScreen.SetActive(true);

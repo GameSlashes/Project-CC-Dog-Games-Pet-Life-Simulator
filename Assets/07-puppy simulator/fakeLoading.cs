@@ -9,6 +9,7 @@ public class fakeLoading : MonoBehaviour
     public Image fillBar;
     public bool onTime;
     public bool loadScene;
+    public GameObject adLoad;
 
 
     public void Awake()
@@ -21,15 +22,14 @@ public class fakeLoading : MonoBehaviour
 
         fillBar.fillAmount = 0;
         onTime = false;
+
+        if(PlayerPrefs.GetInt("adShowing") == 5)
+        {
+            adLoad.SetActive(false);
+        }
     }
 
-    //public void Start()
-    //{
-    //    if (FindObjectOfType<Handler>())
-    //    {
-    //        FindObjectOfType<Handler>().LoadInterstitialAd();
-    //    }
-    //}
+   
     public void Update()
     {
         fillBar.fillAmount += 0.2f * Time.deltaTime;
@@ -42,6 +42,9 @@ public class fakeLoading : MonoBehaviour
                     FindObjectOfType<Handler>().ShowInterstitialAd();
                 offBB();
                 onTime = true;
+
+                adLoad.SetActive(false);
+                PlayerPrefs.SetInt("adShowing", 0);
             }
         }
 
